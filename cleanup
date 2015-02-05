@@ -1,0 +1,6 @@
+############### still a WIP ###############
+rm -f -r src/*.o src/*.so */*~ *~ \
+  src/ITK-*/ \
+  `find ./src -name CMakeFiles` \
+  src/CMakeCache.txt \
+  src/CMakeFiles/ src/cmake_install.cmake

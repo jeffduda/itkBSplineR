@@ -1,0 +1,13 @@
+Package: itkBSplineR
+Type: Package
+Title: ITK implementation of BSplines
+Version: 1.0.0
+Date: 2015-01-28
+Author: Jeffrey T, Duda
+Maintainer: Jeffrey T. Duda <jeff.duda@gmail.com>
+Description: Package provides access to itk routines using BSplines
+License: GPL (>=2)
+LazyLoad: yes
+Depends: Rcpp
+LinkingTo: Rcpp
+SystemRequirements: cmake

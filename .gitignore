@@ -1,0 +1,14 @@
+# ignore all the backup files created by editors
+*~
+*.so
+*.o
+
+# things to ignore in directory itkBSplineR/src
+src/CMakeCache.txt
+src/CMakeFiles/
+src/cmake_install.cmake
+src/ITK-src/
+src/ITK-build/
+src/ITK-install/
+src/ITK-prefix/
+src/symbols.rds
