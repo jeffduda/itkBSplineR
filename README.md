@@ -5,4 +5,5 @@ This package provides routines to interface the ITK implementation of BSplines
 The simplest install method is to install from R via:
 
 library(devtools)
+
 install_github("jeffduda/itkBSplineR")
