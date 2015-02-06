@@ -1,0 +1,8 @@
+^\.travis\.yml$
+src/ITK-build/
+src/ITK-src/
+src/ITK-prefix/
+src/ITK-install
+src/ITK-src/.git
+src/ITK-src/Modules/Remote/MGHIO/.git
+.gitignore

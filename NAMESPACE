@@ -1,3 +1,4 @@
 useDynLib(itkBSplineR)
 exportMethods(coerce)
 exportPattern("^[^.]")
+import(Rcpp)
