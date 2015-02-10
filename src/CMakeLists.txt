@@ -10,6 +10,11 @@ endif( NOT CMAKE_BUILD_TYPE )
 #  an update to the ITK_INCLUDE variable in src/Makevars
 #  as the path includes the ITK version (e.g ${INSTALL_DIR}/include/ITK-4.7/)
 
+# HACK This code fixes a loony problem with HDF5 -- it doesn't
+#      link properly if -fopenmp is used.
+string(REPLACE "-fopenmp" "" ITK_CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+string(REPLACE "-fopenmp" "" ITK_CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+
 ExternalProject_Add(ITK
   GIT_REPOSITORY https://github.com/InsightSoftwareConsortium/ITK.git
   GIT_TAG 6e55ef004c197d0e0850c9a65fe553c4156d3bcf
@@ -18,11 +23,11 @@ ExternalProject_Add(ITK
   BINARY_DIR ${itkBSplineR_SuperBuild_SOURCE_DIR}/ITK-build
   INSTALL_DIR ${itkBSplineR_SuperBuild_SOURCE_DIR}/ITK-install
     CMAKE_ARGS
+    --no-warn-unused-cli
     -DBUILD_EXAMPLES:BOOL=OFF
     -DBUILD_SHARED_LIBS:BOOL=OFF
     -DBUILD_TESTING:BOOL=OFF
     -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
-    #-DITK_BUILD_ALL_MODULES:BOOL=OFF
     -DITK_LEGACY_REMOVE:BOOL=OFF
     -DITKV3_COMPATIBILITY:BOOL=ON
     -DITK_BUILD_DEFAULT_MODULES:BOOL=ON
@@ -30,8 +35,9 @@ ExternalProject_Add(ITK
     -DModule_MGHIO:BOOL=ON
     -DModule_ITKReview:BOOL=ON
     -DModule_ITKVtkGlue:BOOL=OFF
-    -DITK_FUTURE_LEGACY_REMOVE:=BOOL=ON
+    -DITK_FUTURE_LEGACY_REMOVE:BOOL=ON
     -DCMAKE_CXX_FLAGS="-fPIC"
+    -DCMAKE_C_FLAGS="-fPIC"
     -DCMAKE_INSTALL_PREFIX=${itkBSplineR_SuperBuild_SOURCE_DIR}/ITK-install
   cmakedefine NDEBUG
 )
