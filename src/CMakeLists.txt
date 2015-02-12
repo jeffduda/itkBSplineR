@@ -23,6 +23,7 @@ ExternalProject_Add(ITK
   BINARY_DIR ${itkBSplineR_SuperBuild_SOURCE_DIR}/ITK-build
   INSTALL_DIR ${itkBSplineR_SuperBuild_SOURCE_DIR}/ITK-install
     CMAKE_ARGS
+    -Wno-dev
     --no-warn-unused-cli
     -DBUILD_EXAMPLES:BOOL=OFF
     -DBUILD_SHARED_LIBS:BOOL=OFF
@@ -30,14 +31,22 @@ ExternalProject_Add(ITK
     -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
     -DITK_LEGACY_REMOVE:BOOL=OFF
     -DITKV3_COMPATIBILITY:BOOL=ON
-    -DITK_BUILD_DEFAULT_MODULES:BOOL=ON
+    -DITK_BUILD_DEFAULT_MODULES:BOOL=OFF
+    -DITK_Group_Core:BOOL=ON
+    -DITK_Group_Filtering:BOOL=ON
+    -DITK_Group_IO:BOOL=ON
+    -DITK_Group_Numerics:BOOL=ON
+    -DITK_Group_Nonunit:BOOL=ON
+    -DITK_Group_Video:BOOL=OFF
+    -DITK_Group_Bridge:BOOL=OFF
+    -DITK_Group_Compatibility:BOOL=OFF
+    -DITK_Group_Registration:BOOL=OFF
+    -DITK_Group_Segmentation:BOOL=OFF
+    -DITK_Group_ThirdParty:BOOL=OFF
     -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
-    -DModule_MGHIO:BOOL=ON
-    -DModule_ITKReview:BOOL=ON
-    -DModule_ITKVtkGlue:BOOL=OFF
     -DITK_FUTURE_LEGACY_REMOVE:BOOL=ON
     -DCMAKE_CXX_FLAGS="-fPIC"
-    -DCMAKE_C_FLAGS="-fPIC"
+    #-DCMAKE_C_FLAGS="-fPIC"
     -DCMAKE_INSTALL_PREFIX=${itkBSplineR_SuperBuild_SOURCE_DIR}/ITK-install
   cmakedefine NDEBUG
 )
